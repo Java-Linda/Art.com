@@ -24,32 +24,38 @@ const dropTables = async () => {
 }
 
 const createTables = async () => {
-    console.log("Building tables...")
-    await client.query(`
-        CREATE TABLE buyers (
-            username varchar(255) UNIQUE NOT NULL,
-            password varchar(255) UNIQUE NOT NULL,
-            name varchar(255) UNIQUE NOT NULL,
-            address varchar(255) UNIQUE NOT NULL
-        );
-        CREATE TABLE artwork (
-            artwork_id SERIAL PRIMARY KEY,
-            artist varchar(255) NOT NULL,
-            creation date varchar(255) UNIQUE NOT NULL,
-            medium varchar(255) NOT NULL,
-            subjects varchar(255) NOT NULL
-        );
-        CREATE TABLE subjects (
-            classic BOOLEAN,
-            modern BOOLEAN,
-            abstract BOOLEAN,
-            mid-century modern BOOLEAN,
-            impressionism BOOLEAN,
-            surrealism BOOLEAN,
-            pop BOOLEAN
-        );
-    `)
-    console.log("Tables built!")
+    try {     
+        console.log("Building tables...")
+        await client.query(`
+            CREATE TABLE buyers (
+                buyer_id SERIAL PRIMARY KEY,
+                username VARCHAR(255) UNIQUE NOT NULL,
+                password VARCHAR(255) UNIQUE NOT NULL,
+                name VARCHAR(255) UNIQUE NOT NULL,
+                address VARCHAR(255) UNIQUE NOT NULL
+            );
+            CREATE TABLE artwork (
+                artwork_id SERIAL PRIMARY KEY,
+                artist VARCHAR(255) NOT NULL,
+                creation_date DATE UNIQUE NOT NULL,
+                medium VARCHAR(255) NOT NULL,
+                subjects VARCHAR(255) NOT NULL
+            );
+            CREATE TABLE subjects (
+                subjects_id SERIAL PRIMARY KEY,
+                classic BOOLEAN,
+                modern BOOLEAN,
+                abstract BOOLEAN,
+                mid_century_modern BOOLEAN,
+                impressionism BOOLEAN,
+                surrealism BOOLEAN,
+                pop BOOLEAN
+            );
+        `)
+        console.log("Tables built!")
+    } catch (error) {
+       throw error 
+    }
 }
 
 const createInitialBuyer = async () => {
@@ -96,8 +102,8 @@ const rebuildDb = async () => {
         //Generating starting data
         console.log("starting to seed...")
         await createInitialBuyer()
-        await createInitialArtwork()
-        await createInitialSubject()
+        //await createInitialArtwork()
+        //await createInitialSubject()
 
     } catch (error) {
         console.error(error)

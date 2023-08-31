@@ -7,7 +7,6 @@ const buyers = [
 
 //artwork
 const artwork = [
-    "Id",
     "Artist",
     "Creation Date",
     "Medium",
