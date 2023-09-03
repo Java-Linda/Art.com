@@ -1,19 +1,35 @@
 const client = require('../client')
 
-async function createArtwork({ artwork }) {
+const createArtwork = async ({ name, artist, creation_date, medium, subjectId }) => {
     try {
         const {
-            rows: [art]
-        } = await client.query(`
-            INSERT INTO artwork(art)
-            VALUES($1)
-            RETURNING *;
-        `, [artwork]
+            rows: [artwork],
+            //INSERT SQL query
+        } = await client.query (
+            `
+                INSERT INTO artwork(name, artist, creation_date, medium, "subjectId")
+                VALUES($1, $2, $3, $4, $5)
+                RETURNING *;
+            `,
+            [name, artist, creation_date, medium, subjectId]
         )
-        return art
+        return artwork
     } catch (error) {
         throw error
     }
 }
 
-module.exports = { createArtwork }
+const getAllArtworks = async () => {
+    try {
+        const { rows }
+         = await client.query(`
+            SELECT *
+            FROM artwork;
+        `)
+        return rows
+    } catch (error) {
+        throw error
+    }
+}
+
+module.exports = { createArtwork, getAllArtworks }

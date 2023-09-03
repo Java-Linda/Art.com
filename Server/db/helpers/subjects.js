@@ -1,41 +1,52 @@
 const client = require("../client")
 
-const createSpecies = async ({ name, primaryTypeId, secondaryTypeId }) => {
+const createSubject = async ({ name, artist, creation_date, medium, subjectId }) => {
     try {
         const {
-            rows: [species],
-            //need quotes in the primaryTypeId & secondaryTypeId because psql is picky with camelCase
+            rows: [subjects],
+            //INSERT SQL query
         } = await client.query (
             `
-                INSERT INTO species(name, "primaryTypeId", "secondaryTypeId" )
-                VALUES($1, $2, $3)
+                INSERT INTO subjects(Classic, Modern, Abstract, Impressionism, Surrealism)
+                VALUES($1, $2, $3, $4, $5 )
                 RETURNING *;
             `,
-            //Adding a ternary to secondary in case it's null, we then fill it in with "n/a"
-            [name, primaryTypeId, secondaryTypeId ? secondaryTypeId : 20]
+            [Classic, Modern, Abstract, Impressionism, Surrealism]
         )
-        return species
+        return subjects
     } catch (error) {
         throw error
     }
 }
 
-//Just an example of how you pull in the id to a query - this is not used in the database portion of this project
-const getSpeciesById = async (speciesId) => {
+const getAllSubjects = async () => {
+    try {
+        const { rows }
+         = await client.query(`
+            SELECT *
+            FROM subjects;
+        `)
+        return rows
+    } catch (error) {
+        throw error
+    }
+}
+
+const getSubjectsById = async (subjectsId) => {
     try {
         const {
-            rows: [species]
+            rows: [subjects]
         } = await client.query(
             `
                 SELECT *
-                FROM species
-                WHERE "speciesId" =${speciesId};
+                FROM subjects
+                WHERE "subjectsId" =${subjectsId};
             `
         )
-        return species
+        return subjects
     } catch (error) {
         throw error
     }
 }
 
-module.exports = { createSpecies, getSpeciesById }
+module.exports = { createSubject, getAllSubjects, getSubjectsById }

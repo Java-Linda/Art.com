@@ -2,7 +2,7 @@ const client = require('./client')
 
 const { createBuyer, getAllBuyers } = require('./helpers/buyers')
 const { createArtwork, getArtworkById } = require('./helpers/artwork')
-const { createSubject } = require('./helpers/subjects')
+const { createSubject, getAllSubjects, getSubjectsById } = require('./helpers/subjects')
 
 
 const { buyers, artwork, subjects } = require('./seedData')
@@ -46,10 +46,8 @@ const createTables = async () => {
                 classic BOOLEAN,
                 modern BOOLEAN,
                 abstract BOOLEAN,
-                mid_century_modern BOOLEAN,
                 impressionism BOOLEAN,
-                surrealism BOOLEAN,
-                pop BOOLEAN
+                surrealism BOOLEAN
             );
         `)
         console.log("Tables built!")
@@ -102,8 +100,8 @@ const rebuildDb = async () => {
         //Generating starting data
         console.log("starting to seed...")
         await createInitialBuyer()
-        //await createInitialArtwork()
-        //await createInitialSubject()
+        await createInitialArtwork()
+        await createInitialSubject()
 
     } catch (error) {
         console.error(error)

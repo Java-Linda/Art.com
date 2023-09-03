@@ -18,7 +18,7 @@ const artwork = [
 
 //subjects
 const subjects = [
-    "Classic (including Renaissance and Baroque)",
+    "Classic",
     "Modern",
     "Abstract",
     "Impressionism",
