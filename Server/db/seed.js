@@ -39,10 +39,10 @@ const createTables = async () => {
                 artist VARCHAR(255) NOT NULL,
                 creation_date DATE UNIQUE NOT NULL,
                 medium VARCHAR(255) NOT NULL,
-                subjects VARCHAR(255) NOT NULL
+                "subjectID" VARCHAR(255) NOT NULL
             );
             CREATE TABLE subjects (
-                subjects_id SERIAL PRIMARY KEY,
+                "subjectId" SERIAL PRIMARY KEY,
                 classic BOOLEAN,
                 modern BOOLEAN,
                 abstract BOOLEAN,
@@ -74,7 +74,7 @@ const createInitialArtwork = async () => {
         for (const art of artwork) {
             await createArtwork( { artwork: art } )
         }
-        console.log("created artworks")
+        console.log("created artwork")
     } catch (error) {
         throw error
     }
