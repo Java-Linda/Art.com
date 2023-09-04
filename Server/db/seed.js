@@ -1,7 +1,7 @@
 const client = require('./client')
 
 const { createBuyer, getAllBuyers } = require('./helpers/buyers')
-const { createArtwork, getArtworkById } = require('./helpers/artwork')
+const { createArtwork, getAllArtwork } = require('./helpers/artwork')
 const { createSubject, getAllSubjects, getSubjectsById } = require('./helpers/subjects')
 
 
@@ -34,20 +34,21 @@ const createTables = async () => {
                 name VARCHAR(255) UNIQUE NOT NULL,
                 address VARCHAR(255) UNIQUE NOT NULL
             );
-            CREATE TABLE artwork (
-                artwork_id SERIAL PRIMARY KEY,
-                artist VARCHAR(255) NOT NULL,
-                creation_date DATE UNIQUE NOT NULL,
-                medium VARCHAR(255) NOT NULL,
-                "subjectID" VARCHAR(255) NOT NULL
-            );
             CREATE TABLE subjects (
-                "subjectId" SERIAL PRIMARY KEY,
+                "subjectsId" SERIAL PRIMARY KEY,
                 classic BOOLEAN,
                 modern BOOLEAN,
                 abstract BOOLEAN,
                 impressionism BOOLEAN,
                 surrealism BOOLEAN
+            );
+            CREATE TABLE artwork (
+                artwork_id SERIAL PRIMARY KEY,
+                name VARCHAR(255) NOT NULL,
+                artist VARCHAR(255) NOT NULL,
+                creation_date DATE UNIQUE NOT NULL,
+                medium VARCHAR(255) NOT NULL,
+                "subjectsId" INTEGER REFERENCES subjects("subjectsId")
             );
         `)
         console.log("Tables built!")
@@ -78,7 +79,6 @@ const createInitialArtwork = async () => {
     }
 }
 
-//Create subjects
 const createInitialSubject = async () => {
     try {
         for (const subject of subjects) {

@@ -1,6 +1,6 @@
 const client = require("../client")
 
-const createSubject = async ({ name, artist, creation_date, medium, subjectId }) => {
+const createSubject = async ({ Classic, Modern, Abstract, Impressionism, Surrealism }) => {
     try {
         const {
             rows: [subjects],
@@ -8,7 +8,7 @@ const createSubject = async ({ name, artist, creation_date, medium, subjectId })
         } = await client.query (
             `
                 INSERT INTO subjects(Classic, Modern, Abstract, Impressionism, Surrealism)
-                VALUES($1, $2, $3, $4, $5 )
+                VALUES($1, $2, $3, $4, $5)
                 RETURNING *;
             `,
             [Classic, Modern, Abstract, Impressionism, Surrealism]
