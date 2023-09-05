@@ -7,12 +7,12 @@ router.get('/health', (req, res, next) => {
 });
 
 // ROUTER: /api/artwork
-router.use('/artwork', require('../db/helpers/artwork'));
+router.use('/artwork', require('./artwork'));
 
 // ROUTER: /api/buyers
-router.use('/buyers', require('../db/helpers/buyers'));
+//router.use('/buyers', require('./buyers'));
 
 // ROUTER: /api/subjects
-router.use('/subjects', require('../db/helpers/subjects'));
+//router.use('/subjects', require('./subjects'));
 
 module.exports = router;

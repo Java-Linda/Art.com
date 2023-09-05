@@ -1,7 +1,7 @@
 const client = require('./client')
 
-const { createBuyer, getAllBuyers } = require('./helpers/buyers')
-const { createArtwork, getAllArtwork } = require('./helpers/artwork')
+const { createBuyer, getAllBuyers, getBuyersById } = require('./helpers/buyers')
+const { createArtwork, getAllArtwork, getArtworkById } = require('./helpers/artwork')
 const { createSubject, getAllSubjects, getSubjectsById } = require('./helpers/subjects')
 
 

@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const { createArtwork, getAllArtwork } = require('../db/helpers/artwork');
+const { createArtwork, getAllArtwork, getArtworkById } = require('../db/helpers/artwork');
 
 // GET - /api/artwork - get all artwork
 router.get('/', async (req, res, next) => {
@@ -14,16 +14,16 @@ router.get('/', async (req, res, next) => {
 });
 
 // GET - /api/artwork/:artworkId - get artwork by id
-router.get('/:artworkId', async (req, res, next) => {
-    try{
-        const artwork = await getArtworkById(req.params.artworkId);
-        res.send(artwork);
-    } catch (error) {
-        next(error);
-    }
-});
+// router.get('/:artworkId', async (req, res, next) => {
+//     try{
+//         const artwork = await getArtworkById(req.params.artworkId);
+//         res.send(artwork);
+//     } catch (error) {
+//         next(error);
+//     }
+// });
 
-// POST - /api/artwork - create a new artwork
+//POST - /api/artwork - create a new artwork
 router.post('/', async (req, res, next) => {
     try{
         const artwork = await createArtwork(req.body);
@@ -34,23 +34,23 @@ router.post('/', async (req, res, next) => {
 });
 
 // PUT - /api/artwork/:artworkId - update an artwork
-router.put('/:artworkId', async (req, res, next) => {
-    try{
-        const artwork = await updateArtwork(req.params.artworkId, req.body);
-        res.send(artwork);
-    } catch (error) {
-        next(error);
-    }
-});
+// router.put('/:artworkId', async (req, res, next) => {
+//     try{
+//         const artwork = await updateArtwork(req.params.artworkId, req.body);
+//         res.send(artwork);
+//     } catch (error) {
+//         next(error);
+//     }
+// });
 
 // DELETE - /api/artwork/:artworkId - delete an artwork
-router.delete('/:artworkId', async (req, res, next) => {
-    try{
-        const artwork = await deleteArtwork(req.params.artworkId);
-        res.send(artwork);
-    } catch (error) {
-        next(error);
-    }
-});
+// router.delete('/:artworkId', async (req, res, next) => {
+//     try{
+//         const artwork = await deleteArtwork(req.params.artworkId);
+//         res.send(artwork);
+//     } catch (error) {
+//         next(error);
+//     }
+// });
 
 module.exports = router;

@@ -32,4 +32,21 @@ const getAllBuyers = async () => {
     }
 }
 
-module.exports = { createBuyer, getAllBuyers }
+const getBuyersById = async (buyerId) => {
+    try {
+        const {
+            rows: [buyers]
+        } = await client.query(
+            `
+                SELECT *
+                FROM buyers
+                WHERE "buyerId" =${buyerId};
+            `
+        )
+        return buyers
+    } catch (error) {
+        throw error
+    }
+}
+
+module.exports = { createBuyer, getAllBuyers, getBuyersById }

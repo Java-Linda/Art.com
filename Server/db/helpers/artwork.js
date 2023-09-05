@@ -32,4 +32,21 @@ const getAllArtwork = async () => {
     }
 }
 
-module.exports = { createArtwork, getAllArtwork }
+const getArtworkById = async (artworkId) => {
+    try {
+        const {
+            rows: [artwork]
+        } = await client.query(
+            `
+                SELECT *
+                FROM artwork
+                WHERE "artworkId" =${artworkId};
+            `
+        )
+        return artwork
+    } catch (error) {
+        throw error
+    }
+}
+
+module.exports = { createArtwork, getAllArtwork, getArtworkById }
