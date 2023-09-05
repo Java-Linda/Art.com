@@ -28,7 +28,7 @@ const createTables = async () => {
         console.log("Building tables...")
         await client.query(`
             CREATE TABLE buyers (
-                buyer_id SERIAL PRIMARY KEY,
+                "buyerId" SERIAL PRIMARY KEY,
                 username VARCHAR(255) UNIQUE NOT NULL,
                 password VARCHAR(255) UNIQUE NOT NULL,
                 name VARCHAR(255) UNIQUE NOT NULL,
@@ -43,7 +43,7 @@ const createTables = async () => {
                 surrealism BOOLEAN
             );
             CREATE TABLE artwork (
-                artwork_id SERIAL PRIMARY KEY,
+                "artworkId" SERIAL PRIMARY KEY,
                 name VARCHAR(255) NOT NULL,
                 artist VARCHAR(255) NOT NULL,
                 creation_date VARCHAR(255) NOT NULL,

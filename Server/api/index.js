@@ -10,9 +10,9 @@ router.get('/health', (req, res, next) => {
 router.use('/artwork', require('./artwork'));
 
 // ROUTER: /api/buyers
-//router.use('/buyers', require('./buyers'));
+router.use('/buyers', require('./buyers'));
 
 // ROUTER: /api/subjects
-//router.use('/subjects', require('./subjects'));
+router.use('/subjects', require('./subjects'));
 
 module.exports = router;

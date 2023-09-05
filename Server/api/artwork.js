@@ -14,14 +14,14 @@ router.get('/', async (req, res, next) => {
 });
 
 // GET - /api/artwork/:artworkId - get artwork by id
-// router.get('/:artworkId', async (req, res, next) => {
-//     try{
-//         const artwork = await getArtworkById(req.params.artworkId);
-//         res.send(artwork);
-//     } catch (error) {
-//         next(error);
-//     }
-// });
+router.get('/:artworkId', async (req, res, next) => {
+    try{
+        const artwork = await getArtworkById(req.params.artworkId);
+        res.send(artwork);
+    } catch (error) {
+        next(error);
+    }
+});
 
 //POST - /api/artwork - create a new artwork
 router.post('/', async (req, res, next) => {
