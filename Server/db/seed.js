@@ -46,11 +46,11 @@ const createTables = async () => {
                 artwork_id SERIAL PRIMARY KEY,
                 name VARCHAR(255) NOT NULL,
                 artist VARCHAR(255) NOT NULL,
-                creation_date DATE UNIQUE NOT NULL,
+                creation_date VARCHAR(255) NOT NULL,
                 medium VARCHAR(255) NOT NULL,
                 "subjectsId" INTEGER REFERENCES subjects("subjectsId")
             );
-        `)
+       `)
         console.log("Tables built!")
     } catch (error) {
        throw error 
@@ -71,7 +71,7 @@ const createInitialBuyer = async () => {
 const createInitialArtwork = async () => {
     try {
         for (const art of artwork) {
-            await createArtwork( { artwork: art } )
+            await createArtwork( art )
         }
         console.log("created artwork")
     } catch (error) {
@@ -100,8 +100,9 @@ const rebuildDb = async () => {
         //Generating starting data
         console.log("starting to seed...")
         await createInitialBuyer()
-        await createInitialArtwork()
         await createInitialSubject()
+        await createInitialArtwork()
+        
 
     } catch (error) {
         console.error(error)
