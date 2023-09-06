@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const { createArtwork, getAllArtwork, getArtworkById } = require('../db/helpers/artwork');
+const { createArtwork, getAllArtwork, getArtworkById, updateArtwork, deleteArtwork } = require('../db/helpers/artwork');
 
 // GET - /api/artwork - get all artwork
 router.get('/', async (req, res, next) => {
@@ -34,23 +34,23 @@ router.post('/', async (req, res, next) => {
 });
 
 // PUT - /api/artwork/:artworkId - update an artwork
-// router.put('/:artworkId', async (req, res, next) => {
-//     try{
-//         const artwork = await updateArtwork(req.params.artworkId, req.body);
-//         res.send(artwork);
-//     } catch (error) {
-//         next(error);
-//     }
-// });
+router.put('/:artworkId', async (req, res, next) => {
+    try{
+        const artwork = await updateArtwork(req.params.artworkId, req.body);
+        res.send(artwork);
+    } catch (error) {
+        next(error);
+    }
+});
 
 // DELETE - /api/artwork/:artworkId - delete an artwork
-// router.delete('/:artworkId', async (req, res, next) => {
-//     try{
-//         const artwork = await deleteArtwork(req.params.artworkId);
-//         res.send(artwork);
-//     } catch (error) {
-//         next(error);
-//     }
-// });
+router.delete('/:artworkId', async (req, res, next) => {
+    try{
+        const artwork = await deleteArtwork(req.params.artworkId);
+        res.send(artwork);
+    } catch (error) {
+        next(error);
+    }
+});
 
 module.exports = router;

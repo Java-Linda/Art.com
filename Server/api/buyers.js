@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const { createBuyer, getAllBuyers, getBuyersById } = require('../db/helpers/buyers');
+const { createBuyer, getAllBuyers, getBuyersById, updateBuyer, deleteBuyer } = require('../db/helpers/buyers');
 
 // GET - /api/buyers - get all buyers
 router.get('/', async (req, res, next) => {
