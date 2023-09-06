@@ -49,4 +49,39 @@ const getArtworkById = async (artworkId) => {
     }
 }
 
-module.exports = { createArtwork, getAllArtwork, getArtworkById }
+const updateArtwork = async (artworkId, body) => {
+    try{
+        const { rows } = await client.query(
+            `
+            UPDATE artwork
+            SET artwork_name = '${body.artwork_name}',
+            artist = '${body.artist}',
+            creation_date = '${body.creation_date}',
+            medium = '${body.medium}',
+            "subjectsId" = '${body.subjectsId}'
+            WHERE "artworkId" = ${artworkId}
+            RETURNING *;
+            `
+        );
+        return rows;
+    } catch (error) {
+        throw error;
+    }
+};
+
+const deleteArtwork = async (artworkId) => {
+    try{
+        const { rows } = await client.query(
+            `
+            DELETE FROM artwork
+            WHERE "artworkId" = ${artworkId}
+            RETURNING *;
+            `
+        );
+        return rows;
+    } catch (error) {
+        throw error;
+    }
+}
+
+module.exports = { createArtwork, getAllArtwork, getArtworkById, updateArtwork, deleteArtwork }

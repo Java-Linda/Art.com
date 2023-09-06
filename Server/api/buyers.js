@@ -34,23 +34,23 @@ router.post('/', async (req, res, next) => {
 });
 
 // PUT - /api/buyers/:buyerId - update an artwork
-// router.put('/:buyerId', async (req, res, next) => {
-//     try{
-//         const buyer = await updateBuyer(req.params.buyerId, req.body);
-//         res.send(buyer);
-//     } catch (error) {
-//         next(error);
-//     }
-// });
+router.put('/:buyerId', async (req, res, next) => {
+    try{
+        const buyer = await updateBuyer(req.params.buyerId, req.body);
+        res.send(buyer);
+    } catch (error) {
+        next(error);
+    }
+});
 
 // DELETE - /api/buyers/:buyerId - delete a buyer
-// router.delete('/:buyerId', async (req, res, next) => {
-//     try{
-//         const buyer = await deleteBuyer(req.params.buyerId);
-//         res.send(buyer);
-//     } catch (error) {
-//         next(error);
-//     }
-// });
+router.delete('/:buyerId', async (req, res, next) => {
+    try{
+        const buyer = await deleteBuyer(req.params.buyerId);
+        res.send(buyer);
+    } catch (error) {
+        next(error);
+    }
+});
 
 module.exports = router;

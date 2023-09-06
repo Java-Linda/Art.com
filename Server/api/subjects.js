@@ -34,23 +34,23 @@ router.post('/', async (req, res, next) => {
 });
 
 // PUT - /api/subjects/:subjectsId - update subjects
-// router.put('/:subjectsId', async (req, res, next) => {
-//     try{
-//         const subject = await updateSubject(req.params.subjectsId, req.body);
-//         res.send(subject);
-//     } catch (error) {
-//         next(error);
-//     }
-// });
+router.put('/:subjectsId', async (req, res, next) => {
+    try{
+        const subject = await updateSubject(req.params.subjectsId, req.body);
+        res.send(subject);
+    } catch (error) {
+        next(error);
+    }
+});
 
 // DELETE - /api/subjects/:subjectsId - delete a subject
-// router.delete('/:subjectsId', async (req, res, next) => {
-//     try{
-//         const subject = await deleteSubject(req.params.subjectsId);
-//         res.send(subject);
-//     } catch (error) {
-//         next(error);
-//     }
-// });
+router.delete('/:subjectsId', async (req, res, next) => {
+    try{
+        const subject = await deleteSubject(req.params.subjectsId);
+        res.send(subject);
+    } catch (error) {
+        next(error);
+    }
+});
 
 module.exports = router;

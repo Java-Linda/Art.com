@@ -49,4 +49,38 @@ const getBuyersById = async (buyerId) => {
     }
 }
 
-module.exports = { createBuyer, getAllBuyers, getBuyersById }
+const updateBuyer = async (buyerId, body) => {
+    try{
+        const { rows } = await client.query(
+            `
+            UPDATE buyer
+            SET buyer_name = '${body.buyer_name}',
+            username = '${body.username}',
+            password = '${body.password}',
+            address = '${body.address}'
+            WHERE "buyerId" = ${buyerId}
+            RETURNING *;
+            `
+        );
+        return rows;
+    } catch (error) {
+        throw error;
+    }
+};
+
+const deleteBuyer = async (buyerId) => {
+    try{
+        const { rows } = await client.query(
+            `
+            DELETE FROM buyers
+            WHERE "buyerId" = ${buyerId}
+            RETURNING *;
+            `
+        );
+        return rows;
+    } catch (error) {
+        throw error;
+    }
+}
+
+module.exports = { createBuyer, getAllBuyers, getBuyersById, updateBuyer, deleteBuyer }

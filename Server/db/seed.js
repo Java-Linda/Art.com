@@ -1,8 +1,8 @@
 const client = require('./client')
 
-const { createBuyer, getAllBuyers, getBuyersById } = require('./helpers/buyers')
-const { createArtwork, getAllArtwork, getArtworkById } = require('./helpers/artwork')
-const { createSubject, getAllSubjects, getSubjectsById } = require('./helpers/subjects')
+const { createBuyer, getAllBuyers, getBuyersById, updateBuyer, deleteBuyer } = require('./helpers/buyers')
+const { createArtwork, getAllArtwork, getArtworkById, updateArtwork, deleteArtwork } = require('./helpers/artwork')
+const { createSubject, getAllSubjects, getSubjectsById, updateSubject, deleteSubject } = require('./helpers/subjects')
 
 
 const { buyers, artwork, subjects } = require('./seedData')
@@ -71,7 +71,7 @@ const createInitialBuyer = async () => {
 const createInitialArtwork = async () => {
     try {
         for (const art of artwork) {
-            await createArtwork( art )
+            await createArtwork(art)
         }
         console.log("created artwork")
     } catch (error) {
