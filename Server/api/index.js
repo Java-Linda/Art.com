@@ -15,4 +15,7 @@ router.use('/buyers', require('./buyers'));
 // ROUTER: /api/subjects
 router.use('/subjects', require('./subjects'));
 
+// ROUTER: /api/artists
+router.use('/artists', require('./artists'));
+
 module.exports = router;

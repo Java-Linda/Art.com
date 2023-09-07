@@ -2,10 +2,11 @@ const client = require('./client')
 
 const { createBuyer, getAllBuyers, getBuyersById, updateBuyer, deleteBuyer } = require('./helpers/buyers')
 const { createArtwork, getAllArtwork, getArtworkById, updateArtwork, deleteArtwork } = require('./helpers/artwork')
-const { createSubject, getAllSubjects, getSubjectsById, updateSubject, deleteSubject } = require('./helpers/subjects')
+const { createArtist, getAllArtists, getArtistById } = require('./helpers/artists')
+const { createSubject, getAllSubjects, getSubjectsById } = require('./helpers/subjects')
 
 
-const { buyers, artwork, subjects } = require('./seedData')
+const { buyers, artwork, artists, subjects } = require('./seedData')
 
 //Drop Tables for cleanliness
 const dropTables = async () => {
@@ -13,6 +14,7 @@ const dropTables = async () => {
         console.log("Starting to drop tables")
         await client.query(`
         DROP TABLE IF EXISTS buyers;
+        DROP TABLE IF EXISTS artists;
         DROP TABLE IF EXISTS artwork;
         DROP TABLE IF EXISTS subjects;
         `)
@@ -49,6 +51,12 @@ const createTables = async () => {
                 creation_date VARCHAR(255) NOT NULL,
                 medium VARCHAR(255) NOT NULL,
                 "subjectsId" INTEGER REFERENCES subjects("subjectsId")
+            );
+            CREATE TABLE artists (
+                "artistsId" SERIAL PRIMARY KEY,
+                artist_name VARCHAR(255) NOT NULL,
+                artwork VARCHAR(255) NOT NULL,
+                "artworkId" INTEGER REFERENCES artwork("artworkId")
             );
        `)
         console.log("Tables built!")
@@ -90,6 +98,17 @@ const createInitialSubject = async () => {
     }
 }
 
+const createInitialArtist = async () => {
+    try {
+        for (const artist of artists) {
+            await createArtist(artist)
+        }
+        console.log("created artist")
+    } catch (error) {
+        throw error
+    }
+}
+
 //Call all my functions and 'BUILD' database
 const rebuildDb = async () => {
     try {
@@ -102,6 +121,7 @@ const rebuildDb = async () => {
         await createInitialBuyer()
         await createInitialSubject()
         await createInitialArtwork()
+        await createInitialArtist()
         
 
     } catch (error) {
