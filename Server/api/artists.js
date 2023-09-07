@@ -17,8 +17,8 @@ router.get('/', async (req, res, next) => {
 // GET - /api/artists/:artistsId - get artist by id
 router.get('/:artistsId', async (req, res, next) => {
     try{
-        const artwork = await getArtistById(req.params.artistsId);
-        res.send(artists);
+        const artist = await getArtistById(req.params.artistsId);
+        res.send(artist);
     } catch (error) {
         next(error);
     }
