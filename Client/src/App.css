@@ -40,3 +40,22 @@
 .read-the-docs {
   color: #888;
 }
+
+#top-section {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  border: 1px solid white;
+  text-align: left;
+}
+
+.nav-link {
+  margin: 12px 24px;
+  padding: 12px;
+}
+
+.nav-link:hover {
+  color: cyan;
+}

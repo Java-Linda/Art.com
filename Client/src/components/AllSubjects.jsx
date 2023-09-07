@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { fetchAllSubjects } from '../fetching';
 
 export default function AllSubjects() {
-	const [subjects, setSubjects] = useState([]);
+	const [allSubjects, setAllSubjects] = useState([]);
 	const [searchParam, setSearchParam] = useState("");
 
 	useEffect(() => {
@@ -10,13 +10,14 @@ export default function AllSubjects() {
 			const APIResponse = await fetchAllSubjects();
 			console.log(APIResponse);
 			if (APIResponse) {
-				setSubjects(APIResponse);
+				setAllSubjects(APIResponse);
 			} else {
 				console.error("Unable to fetch all subjects");
 			}
 		}
 		getAllSubjects();
 	}, []);
+	return <h1>Subjects Here</h1>
 };
 
 

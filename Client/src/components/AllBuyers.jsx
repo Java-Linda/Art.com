@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { fetchAllBuyers } from '../fetching';
 
 export default function AllBuyers() {
-	const [buyers, setBuyers] = useState([]);
+	const [allBuyers, setAllBuyers] = useState([]);
 	const [searchParam, setSearchParam] = useState("");
 
 	useEffect(() => {
@@ -10,7 +10,7 @@ export default function AllBuyers() {
 			const APIResponse = await fetchAllBuyers();
 			console.log(APIResponse);
 			if (APIResponse) {
-				setBuyers(APIResponse);
+				setAllBuyers(APIResponse);
 			} else {
 				console.error("Unable to fetch all buyers");
 			}

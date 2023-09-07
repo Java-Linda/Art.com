@@ -9,12 +9,11 @@ import AllBuyers from './AllBuyers'
 export default function MainSection() {
 	return (
 		<div id="main-section">
-			<h1>MAIN SECTION HERE</h1>
 			<Routes>
 				{/* <Route path="/home" element={<Home />} /> */}
-				<Route path="/artwork" element={<AllArtwork />} />
-				<Route path="/subjects" element={<AllSubjects />} />
-				<Route path="/buyers" element={<AllBuyers />} />
+				<Route exact path="/artwork" element={<AllArtwork />} />
+				<Route exact path="/subjects" element={<AllSubjects />} />
+				<Route exact path="/buyers" element={<AllBuyers />} />
 				{/* <Route path="/login" element={<Login />} />
 				<Route path="/logout" element={<Logout />} /> */}
 			</Routes>

@@ -3,9 +3,10 @@ const API_URL = `http://localhost:8080/api`;
 // FETCH ALL ARTWORK
 export async function fetchAllArtwork(){
     try{
-        const response = (await fetch(`${API_URL}/artwork`)).json();
-        const Art = await response.json();
-        return Art;
+        const response = await fetch(`${API_URL}/artwork`);
+        console.log(response)
+        const art = await response.json();
+        return art;
         
     }  catch(err) {
         console.log(err);
