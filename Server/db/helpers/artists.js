@@ -1,17 +1,17 @@
 const client = require('../client')
 
-const createArtist = async ({ artist_name, artwork, artworkId }) => {
+const createArtist = async ({ name, artwork, artworkId }) => {
     try {
         const {
             rows: [artists],
             //INSERT SQL query
         } = await client.query (
             `
-                INSERT INTO artists(artist_name, artwork, "artworkId")
+                INSERT INTO artists(name, artwork, "artworkId")
                 VALUES($1, $2, $3)
                 RETURNING *;
             `,
-            [artist_name, artwork, artworkId]
+            [name, artwork, artworkId]
         )
         return artists
     } catch (error) {
@@ -26,7 +26,7 @@ const getAllArtists = async () => {
          SELECT artists.*, artwork.artist
          FROM artists
          INNER JOIN artwork
-         ON artists.artworkId = artwork.artworkId;
+         ON artists."artworkId" = artwork."artworkId";
         `)
         return rows
     } catch (error) {

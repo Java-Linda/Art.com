@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { fetchAllSubjects } from '../fetching';
+import Subjects from './Subjects';
 
 export default function AllSubjects() {
 	const [allSubjects, setAllSubjects] = useState([]);
@@ -17,19 +18,23 @@ export default function AllSubjects() {
 		}
 		getAllSubjects();
 	}, []);
-	return <h1>Subjects Here</h1>
+
+	return (
+		<>
+	    { allSubjects.map((subjects) => {
+			return <div>
+				<Subjects key={subjects.subjectsId} subjects={subjects}/>
+			<button onClick={() =>{
+				Navigate(`/subjects/${subjects.subjectsId}`)
+			}}> Click here for artwork by subject
+			</button>
+			      </div>
+
+
+
+		}) }
+		</>
+	);
 };
 
 
-// import Subjects from './Subjects';
-
-// export default function AllSubjects(allSubjects){
-    
-//     return(
-//         <>
-//         { allSubjects.map((subjects) => {
-//             return <Subjects key={subjects.subjectsId} subjects={subjects}/>
-//         }) }
-//         </>
-//     );
-// }

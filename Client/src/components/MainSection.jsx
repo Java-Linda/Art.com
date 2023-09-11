@@ -1,7 +1,10 @@
 import { Routes, Route } from 'react-router-dom';
 import AllArtwork from './AllArtwork';
 import AllSubjects from './AllSubjects';
-import AllBuyers from './AllBuyers'
+import AllArtists from './AllArtists';
+import SingleSubject from './SingleSubject';
+import SingleArtist from './SingleArtist';
+//import AllBuyers from './AllBuyers'
 // import Home from "./Home";
 // import Login from "./Login";
 // import Logout from "./Logout";
@@ -12,8 +15,10 @@ export default function MainSection() {
 			<Routes>
 				{/* <Route path="/home" element={<Home />} /> */}
 				<Route exact path="/artwork" element={<AllArtwork />} />
+				<Route exact path="/artists" element={<AllArtists />} />
 				<Route exact path="/subjects" element={<AllSubjects />} />
-				<Route exact path="/buyers" element={<AllBuyers />} />
+				<Route exact path="/subjects/:subjectsId" element={<SingleSubject />} />
+				<Route exact path="/artists/:artistsId" element={<SingleArtist />} />
 				{/* <Route path="/login" element={<Login />} />
 				<Route path="/logout" element={<Logout />} /> */}
 			</Routes>

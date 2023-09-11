@@ -1,6 +1,8 @@
 export default function Subjects({ subjects }){
     
     return( 
-       <p key={subjects.subjectsId}> {subjects.name}</p>
+        <h3 key={subjects.subjectsId}>{subjects.type}
+        </h3>
     );
 }
+

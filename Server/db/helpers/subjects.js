@@ -1,17 +1,17 @@
 const client = require("../client")
 
-const createSubject = async ({ Classic, Modern, Abstract, Impressionism, Surrealism }) => {
+const createSubject = async ({ type }) => {
     try {
         const {
             rows: [subjects],
             //INSERT SQL query
         } = await client.query (
             `
-                INSERT INTO subjects(Classic, Modern, Abstract, Impressionism, Surrealism)
-                VALUES($1, $2, $3, $4, $5)
+                INSERT INTO subjects(type)
+                VALUES($1)
                 RETURNING *;
             `,
-            [Classic, Modern, Abstract, Impressionism, Surrealism]
+            [type]
         )
         return subjects
     } catch (error) {

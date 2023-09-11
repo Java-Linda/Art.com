@@ -47,15 +47,26 @@
   left: 0;
   z-index: 100;
   width: 100%;
-  border: 1px solid white;
+  border: 5px solid white;
   text-align: left;
 }
 
-.nav-link {
+.nav-link1 {
   margin: 12px 24px;
-  padding: 12px;
+  font-size: 40px;
+  text-align: center;
 }
 
-.nav-link:hover {
+.nav-link2 {
+  margin: 12px 24px;
+  font-size: 40px;
+  text-align: center;
+}
+
+.nav-link1:hover {
+  color: cyan;
+}
+
+.nav-link2:hover {
   color: cyan;
 }

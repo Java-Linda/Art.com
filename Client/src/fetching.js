@@ -13,7 +13,7 @@ export async function fetchAllArtwork(){
         return err;
     }
 
-}
+};
 
 // FETCH SINGLE ARTWORK BY ID
 export async function fetchArtworkById(artworkId){
@@ -27,10 +27,37 @@ export async function fetchArtworkById(artworkId){
 	}
 };
 
+// FETCH ALL ARTISTS
+export async function fetchAllArtists(){
+    try{
+        const response = await fetch(`${API_URL}/artists`);
+        console.log(response)
+        const artists = await response.json();
+        return artists;
+        
+    }  catch(err) {
+        console.log(err);
+        return err;
+    }
+
+};
+
+// FETCH SINGLE ARTIST BY ID
+export async function fetchArtistById(artistsId){
+	try {
+		const response = await fetch(`${API_URL}/artists/${artistsId}`);
+		const byId = await response.json();
+		return byId;
+
+	} catch (error) {
+		console.error("Unable to fetch artist", error);
+	}
+};
+
 // FETCH ALL SUBJECTS
 export async function fetchAllSubjects(){
     try{
-        const response = (await fetch(`${API_URL}/subjects`)).json();
+        const response = (await fetch(`${API_URL}/subjects`));
         const Subs = await response.json();
         return Subs;
         
@@ -39,7 +66,7 @@ export async function fetchAllSubjects(){
         return err;
     }
 
-}
+};
 
 // FETCH SUBJECTS BY ID
 export async function fetchSubjectsById(subjectsId){
@@ -65,7 +92,7 @@ export async function fetchAllBuyers(){
         return err;
     }
 
-}
+};
 
 // FETCH BUYER BY ID
 export async function fetchBuyerById(buyerId){

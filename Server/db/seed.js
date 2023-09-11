@@ -38,11 +38,7 @@ const createTables = async () => {
             );
             CREATE TABLE subjects (
                 "subjectsId" SERIAL PRIMARY KEY,
-                classic BOOLEAN,
-                modern BOOLEAN,
-                abstract BOOLEAN,
-                impressionism BOOLEAN,
-                surrealism BOOLEAN
+                type VARCHAR(255) UNIQUE NOT NULL
             );
             CREATE TABLE artwork (
                 "artworkId" SERIAL PRIMARY KEY,
@@ -54,7 +50,7 @@ const createTables = async () => {
             );
             CREATE TABLE artists (
                 "artistsId" SERIAL PRIMARY KEY,
-                artist_name VARCHAR(255) NOT NULL,
+                name VARCHAR(255) NOT NULL,
                 artwork VARCHAR(255) NOT NULL,
                 "artworkId" INTEGER REFERENCES artwork("artworkId")
             );
