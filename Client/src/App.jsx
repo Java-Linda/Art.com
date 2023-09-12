@@ -16,19 +16,3 @@ export default function App() {
 		</>
 	);
 };
-
-
-/*<SubjectsList subjects={allSubjects}/>
-<BuyersList buyers={allBuyers}/>*/
-
-// const [allArtwork, setAllArtwork] = useState([]);
-
-// useEffect(() => {
-//   async function fetchData() {
-//     const artwork = await fetchAllArtwork();
-//     setAllArtwork(artwork);
-//     console.log(artwork);
-//     return artwork;
-//   }
-//   fetchData();
-// }, []);

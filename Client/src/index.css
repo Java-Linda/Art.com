@@ -1,17 +1,25 @@
-:root {
+/* :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+} */
+
+body{
+  background-image: url("https://1.bp.blogspot.com/-hTNqZh7K9Mk/VMZfMMzemvI/AAAAAAAAEhQ/SBwJkc8JvXE/s1600/sunrise.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+
 }
 
 a {
@@ -54,16 +62,24 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
   a:hover {
     color: #747bff;
   }
   button {
     background-color: #f9f9f9;
   }
-}
+
+  /* img.bg {
+    /* Set rules to fill background */
+    /*min-height: 100%;
+    min-width: 1024px;
+   
+    /* Set up proportionate scaling */
+    /*width: 100%;
+    height: auto;
+   
+    /* Set up positioning */
+    /*position: fixed;
+    top: 0;
+    left: 0;
+  } */

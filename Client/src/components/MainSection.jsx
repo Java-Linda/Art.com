@@ -15,8 +15,8 @@ export default function MainSection() {
 			<Routes>
 				{/* <Route path="/home" element={<Home />} /> */}
 				<Route exact path="/artwork" element={<AllArtwork />} />
-				<Route exact path="/artists" element={<AllArtists />} />
-				<Route exact path="/subjects" element={<AllSubjects />} />
+				<Route exact path="/artists" element={AllArtists()} />
+				<Route exact path="/subjects" element={AllSubjects()} />
 				<Route exact path="/subjects/:subjectsId" element={<SingleSubject />} />
 				<Route exact path="/artists/:artistsId" element={<SingleArtist />} />
 				{/* <Route path="/login" element={<Login />} />
@@ -25,3 +25,9 @@ export default function MainSection() {
 		</div>
 	);
 }
+
+
+
+//        <Route path="/" element={Home()} />
+//        <Route path="/characters" element={Characters()} />
+//        <Route path="/posts" element={Posts()} />
