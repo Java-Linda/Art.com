@@ -5,21 +5,36 @@
   text-align: center;
 }
 
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+#logo{
+  margin: 0;
+  padding: 12px 48px;
+  color: #fbf7ee;
 }
 
-#top-section {
+#slogan{
+  margin: 0;
+  padding: 0 48px;
+  color: #fbf7ee;
+}
+
+#main-header {
   position: fixed;
+  display: flex;
+  justify-content: space-between;
   top: 0;
   left: 0;
   z-index: 100;
   width: 100%;
-  border: 5px solid white;
+  height: 20vh;
+  background: #373737;
+  /* border: 5px solid white; */
   text-align: left;
+}
+
+#app-body {
+  width: 100%;
+  height: 80vh;
+  margin-top: 20vh;
 }
 
 .nav-link1 {
@@ -40,4 +55,16 @@
 
 .nav-link2:hover {
   color: cyan;
+}
+
+#search-bar{
+  width: 48px;
+  height: 16px;
+  background: white;
+}
+
+.artist-list-item{
+  color: black;
+  
+
 }

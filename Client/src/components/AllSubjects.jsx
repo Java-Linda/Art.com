@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { fetchAllSubjects } from '../fetching';
-import Subjects from './Subjects';
 
 export default function AllSubjects() {
 	const [allSubjects, setAllSubjects] = useState([]);
@@ -23,7 +22,7 @@ export default function AllSubjects() {
 		<>
 	    { allSubjects.map((subjects) => {
 			return <div>
-				<Subjects key={subjects.subjectsId} subjects={subjects}/>
+				<h3 key={subjects.subjectsId}>{subjects.type}</h3>
 			<button onClick={() =>{
 				Navigate(`/subjects/${subjects.subjectsId}`)
 			}}> Click here for artwork by subject

@@ -7,11 +7,13 @@ export default function App() {
 	return (
 		<>
 			<div id="app-section">
-				<div id= "top-section">
-				<Header />
+				<div id="main-header">
+					<Header />
+					<NavBar />
+					<div id="search-bar">
+					</div>		
 				</div>	
-				<NavBar />		
-				<MainSection />
+				<MainSection id="app-body"/>	
 			</div>
 		</>
 	);

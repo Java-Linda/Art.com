@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { fetchAllArtists } from '../fetching';
-import Artists from './Artists';
+import { Link } from 'react-router-dom';
 
 export default function AllArtists() {
 	const [allArtists, setAllArtists] = useState([]);
@@ -19,11 +19,20 @@ export default function AllArtists() {
 		getAllArtists();
 	}, []);
 
+	function navigateToArtist(artistsId){
+		useNavigate(`/artists/${artistsId}`)
+
+	}
+
 	return(
-        <>
-        { allArtists.map((artists) => {
-            return <Artists key={artists.artistsId} artists={artists}/>
+        <ul>
+        { allArtists.map((artist) => {
+			return <li>
+				<Link class="artist-list-item" key={artist.artistsId}
+                to={`/artists/${artist.artistsId}`}>
+				{artist.name}</Link>
+			</li>
         }) }
-        </>
+        </ul>
     );
 };

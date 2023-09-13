@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { fetchArtistById } from '../fetching';
 
@@ -21,16 +21,10 @@ export default function SingleArtist(){
     
     return(
         <>
-        <div
-        key={artist.artistsId}>{artist.name}
-        </div>
+        <Link class="artist-link"
+                to={`/artists/${artist.artistsId}`}>
+				{artist.name}</Link>
         </>
 
     )
 }
-
-
-//<button
-//                onClick={() => {
-//                  navigate(`/songs/${song.songId}`)
-//                }}>See Details</button>
