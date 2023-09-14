@@ -21,7 +21,6 @@ export default function AllArtists() {
 
 	function navigateToArtist(artistsId){
 		useNavigate(`/artists/${artistsId}`)
-
 	}
 
 	return(

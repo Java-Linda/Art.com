@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { fetchSubjectsById } from '../fetching';
 
@@ -21,9 +21,9 @@ export default function SingleSubject(){
     
     return(
         <>
-        <div
-        key={subject.subjectsId}>{subject.type}
-        </div>
+        <Link class="subject-link"
+                to={`/subjects/${subject.subjectsId}`}>
+				{subject.type}</Link>
         </>
 
     )

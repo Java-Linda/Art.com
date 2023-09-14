@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { fetchAllSubjects } from '../fetching';
+import { Link } from 'react-router-dom';
 
 export default function AllSubjects() {
 	const [allSubjects, setAllSubjects] = useState([]);
@@ -18,20 +19,19 @@ export default function AllSubjects() {
 		getAllSubjects();
 	}, []);
 
-	return (
-		<>
-	    { allSubjects.map((subjects) => {
-			return <div>
-				<h3 key={subjects.subjectsId}>{subjects.type}</h3>
-			<button onClick={() =>{
-				Navigate(`/subjects/${subjects.subjectsId}`)
-			}}> Click here for artwork by subject
-			</button>
-			      </div>
+	function navigateToSubject(subjectsId){
+		useNavigate(`/subjects/${subjectsId}`)
+	}
 
+	return(
+		<ul>
+		{ allSubjects.map((subject) => {
+			return <li>
+				<Link class="subject-list-item" key={subject.subjectsId}
+				to={`/subjects/${subject.subjectsId}`}>
+				{subject.type}</Link>
+			</li>
 		}) }
-		</>
+		</ul>
 	);
 };
-
-
